@@ -1,0 +1,55 @@
+将当前文件初始化为git仓库
+git init
+指令别名
+alias ll='ls -al'
+将目录下所有文件加入暂存区
+git add .
+将暂存区所有文件提交到本地仓库
+git commit --m '注释内容'
+版本变更回滚
+git reset --hard 'commitId'
+查看仓库提交日志
+git log / git -log(该命令为别名)
+查看回滚版本变更日志
+git reflog
+查看分支 
+git branch
+创建分支
+git branch 分支名
+切换分支
+git checkout (-b) 分支名(创建并且直接切换) 
+合并分支
+git merge 分支名称
+删除分支
+git branch -d 分支名称
+-------------------------------远程仓库----------------------------------------
+生成公钥
+ssh-keygen -t rsa
+获取公钥
+cat ~/.ssh/id_rsa.pub
+验证是否公钥配置成功
+ssh -T git@gitee.com
+初始化本地仓库与远程仓库对接
+git remote add <远程仓库名称> <仓库路径> 例:git remote add origin xxxxxx
+查看远程仓库
+git remote
+推送到远程仓库
+git push [-f] [--set-upstream] [远端名称 [本地分支名][:远端分支名]]
+ -若远程分支名和本地分支名称相同则可以只写本地分支
+  git push origin master
+ - -f表示强制覆盖
+ - --set-upstream 推送到远端的同时并且建立起和远端分支的关联关系
+  git push --set-upstream origin master(git push -u origin master)
+ -若当前分支和远端分支关联，则可以省略分支名和远端名
+  git push 将master分支推送到已关联的远端分支
+查看当前分支与远程的分支关系
+git branch -vv
+克隆远端生成本地仓库
+git clone <远端仓库地址ssh等> [目录]
+抓取
+git fetch [远端名] [分支名]
+ -将仓库里的更新都抓取到本地，不会进行合并
+ -如果不指定远端名和分支名，则抓取所有分支
+git pull [远端名] [分支名]
+ -将仓库里的更新都抓取到本地，并且进行合并 等同于detch+merge
+ -如果不指定远端名和分支名，则抓取所有分支并且更新当前分支
